@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학과 프로그램</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 로고 -->
+        <div class="logo">
+            <img src="logo.png" alt="영진전문대학교 로고">
+            <h1>영진전문대학교<br>글로벌시스템융합과</h1>
+        </div>
+
+        <!-- 로그인 폼 -->
+        <form class="login-form">
+            <label for="student-id">학번 :</label>
+            <input type="text" id="student-id" placeholder="학번 입력">
+            <label for="password">PASSWORD :</label>
+            <input type="password" id="password" placeholder="비밀번호 입력">
+            
+            <!-- 사용자 유형 선택 -->
+            <div class="user-type">
+                <label><input type="radio" name="user-type" value="학생" checked> 학생</label>
+                <label><input type="radio" name="user-type" value="교수"> 교수</label>
+                <label><input type="radio" name="user-type" value="관리자"> 관리자</label>
+            </div>
+            
+
+            <!-- 버튼 -->
+            <button type="submit" class="login-button">LOG IN</button>
+            <a href="register.html" class="signup-button">Sign Up</a>
+            <button type="button" class="line-signup">Sign up as a LINE...</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* 기본 설정 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0099ff; /* 배경 파란색 */
+    color: white;
+    display: flex; /* Flexbox로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    height: 100vh; /* 전체 화면 높이 */
+}
+
+/* 컨테이너 */
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* 로고 */
+.logo img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    font-size: 1.5em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* 회원가입 폼 */
+.signup-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    color: black;
+    width: 400px; /* 폼 너비 */
+    text-align: left;
+}
+
+/* 레이블 스타일 */
+.signup-form label {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* 입력 필드 스타일 */
+.signup-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+/* 사용자 유형 선택 스타일 */
+.user-type {
+    display: flex;
+    justify-content: space-between; /* 버튼 간 균등 간격 */
+    padding: 5px 10px; /* 내부 여백 최소화 */
+    margin: 15px 0; /* 위아래 간격 조정 */
+    border: 1px solid #ccc; /* 테두리 두께 조정 */
+    border-radius: 8px; /* 둥근 테두리 */
+    background-color: #f9f9f9; /* 배경색 */
+    width: auto; /* 크기를 내용에 맞게 조정 */
+}
+
+.user-type label {
+    font-size: 1em; /* 텍스트 크기 */
+    font-weight: bold; /* 텍스트 굵게 */
+    display: flex;
+    align-items: center; /* 버튼과 텍스트를 같은 라인에 맞춤 */
+    gap: 5px; /* 라디오 버튼과 텍스트 간 간격 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+/* 약관 동의 스타일 */
+.terms {
+    margin: 10px 0; /* 위아래 간격 */
+    font-size: 1em; /* 텍스트 크기 */
+    display: flex; /* 체크박스와 텍스트를 같은 줄에 배치 */
+    align-items: center; /* 체크박스와 텍스트를 수직 정렬 */
+    gap: 5px; /* 체크박스와 텍스트 간 간격 */
+}
+
+
+/* 버튼 스타일 */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* 회원가입 버튼 */
+.signup-button {
+    background-color: #ff6600;
+    color: white;
+    font-weight: bold;
+}
+
+/* 뒤로가기 버튼 */
+.back-button {
+    background-color: #ccc;
+    color: black;
+    font-weight: bold;
+}
