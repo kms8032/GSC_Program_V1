@@ -4,50 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="register_style.css">
+    <link rel="stylesheet" href="./assets/styles/register_style.css">
 </head>
 <body>
     <div class="container">
         <!-- 상단 로고 -->
         <div class="logo">
-            <img src="logo.png" alt="학교 로고">
+            <img src="./assets/logo.png" alt="학교 로고">
             <h1>영진전문대학교<br>글로벌시스템융합과</h1>
         </div>
 
         <!-- 회원가입 폼 -->
-        <form class="signup-form">
-            <label for="name">이름 :</label>
-            <input type="text" id="name" name="name" placeholder="이름 입력">
+        <form class="signup-form" action="./scripts/register_process.php" method="POST">
+            <!-- 이름 입력 -->
+            <div class="form-group">
+                <label for="name">이름 :</label>
+                <input type="text" id="name" name="name" placeholder="이름 입력" required>
+            </div>
 
-            <label for="student-id">학번 :</label>
-            <input type="text" id="student-id" name="student-id" placeholder="학번 입력">
+            <!-- 학번 입력 -->
+            <div class="form-group">
+                <label for="student-id">학번 :</label>
+                <input type="text" id="student-id" name="student-id" placeholder="학번 입력" required>
+            </div>
 
-            <label for="password">비밀번호 :</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호 입력">
+            <!-- 비밀번호 입력 -->
+            <div class="form-group">
+                <label for="password">비밀번호 :</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호 입력" required>
+            </div>
 
-            <label for="confirm-password">비밀번호 확인 :</label>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인">
+            <!-- 비밀번호 확인 -->
+            <div class="form-group">
+                <label for="confirm-password">비밀번호 확인 :</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인" required>
+            </div>
 
             <!-- 사용자 유형 선택 -->
-            <div class="user-type">
-                <label><input type="radio" name="user-type" value="학생" checked> 학생</label>
-                <label><input type="radio" name="user-type" value="교수"> 교수</label>
-                <label><input type="radio" name="user-type" value="관리자"> 관리자</label>
-            </div>
-            
-
-            
-
-            <!-- 약관 동의 -->
-            <div class="terms">
-                
-                <label for="terms">회원가입 약관에 동의합니다.</label>
-                <input type="checkbox" name="terms">
+            <div class="form-group">
+                <label>사용자 유형 :</label>
+                <div class="user-type">
+                    <label><input type="radio" name="user-type" value="학생" checked> 학생</label>
+                    <label><input type="radio" name="user-type" value="교수"> 교수</label>
+                    <label><input type="radio" name="user-type" value="관리자"> 관리자</label>
+                </div>
             </div>
 
-            <!-- 버튼 -->
-            <button type="submit" class="signup-button">회원가입</button>
-            <button type="button" class="back-button" onclick="window.history.back();">뒤로가기</button>
+            <!-- 제출 버튼 -->
+            <div class="form-group">
+                <button type="submit" class="signup-button">회원가입</button>
+            </div>
+
+            <!-- 뒤로가기 버튼 -->
+            <div class="form-group">
+                <button type="button" class="back-button" onclick="window.history.back();">뒤로가기</button>
+            </div>
         </form>
     </div>
 </body>

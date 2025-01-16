@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="./assets/styles/login.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 로고 -->
+        <div class="logo">
+            <img src="./assets/logo.png" alt="로고">
+            <h1>영진전문대학교<br>글로벌시스템융합과</h1>
+        </div>
+
+        <!-- 로그인 폼 -->
+        <form class="login-form" action="./scripts/login_process.php" method="POST">
+            <label for="student-id">학번 :</label>
+            <input type="text" id="student-id" name="student_id" placeholder="학번 입력" >
+            
+            <label for="password">PASSWORD :</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호 입력">
+            
+            <!-- 사용자 유형 선택 -->
+            <div class="user-type">
+                <label><input type="radio" name="user_type" value="학생" checked> 학생</label>
+                <label><input type="radio" name="user_type" value="교수"> 교수</label>
+                <label><input type="radio" name="user_type" value="관리자"> 관리자</label>
+            </div>
+
+            <!-- 버튼 -->
+            <button type="submit" class="login-button">LOG IN</button>
+        </form>
+
+        <!-- 회원가입 버튼 -->
+        <a href="register.html" class="signup-button">Sign Up</a>
+    </div>
+</body>
+</html>
