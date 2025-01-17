@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $pw = "young223!!";
-$dbname = "user_system";
+$dbname = "db";
 $port = 3307;
 
 // MySQLi 연결

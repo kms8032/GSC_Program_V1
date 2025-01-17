@@ -8,33 +8,55 @@
 </head>
 <body>
     <div class="container">
-        <!-- 로고 -->
+        <!-- 상단 로고 -->
         <div class="logo">
-            <img src="./assets/logo.png" alt="로고">
+            <img src="./assets/logo.png" alt="학교 로고">
             <h1>영진전문대학교<br>글로벌시스템융합과</h1>
         </div>
 
         <!-- 로그인 폼 -->
         <form class="login-form" action="./scripts/login_process.php" method="POST">
-            <label for="student-id">학번 :</label>
-            <input type="text" id="student-id" name="student_id" placeholder="학번 입력" >
+            <!-- 학번 입력 필드 -->
+            <div class="form-group">
+                <label for="student-id">학번 :</label>
+                <input type="text" id="student-id" name="student_id" placeholder="학번 입력" required>
+            </div>
             
-            <label for="password">PASSWORD :</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호 입력">
-            
-            <!-- 사용자 유형 선택 -->
-            <div class="user-type">
-                <label><input type="radio" name="user_type" value="학생" checked> 학생</label>
-                <label><input type="radio" name="user_type" value="교수"> 교수</label>
-                <label><input type="radio" name="user_type" value="관리자"> 관리자</label>
+            <!-- 비밀번호 입력 필드 -->
+            <div class="form-group">
+                <label for="password">비밀번호 :</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호 입력" required>
             </div>
 
-            <!-- 버튼 -->
-            <button type="submit" class="login-button">LOG IN</button>
-        </form>
+            <!-- 사용자 유형 선택 -->
+            <div class="form-group">
+                <label>사용자 유형 :</label>
+                <div class="user-type">
+                    <label for="student">
+                        <input type="radio" id="student" name="user_type" value="학생" checked>
+                        학생
+                    </label>
+                    <label for="professor">
+                        <input type="radio" id="professor" name="user_type" value="교수">
+                        교수
+                    </label>
+                    <label for="admin">
+                        <input type="radio" id="admin" name="user_type" value="관리자">
+                        관리자
+                    </label>
+                </div>
+            </div>
 
-        <!-- 회원가입 버튼 -->
-        <a href="register.html" class="signup-button">Sign Up</a>
+            <!-- 로그인 버튼 -->
+            <div class="form-group">
+                <button type="submit" class="action-button login-button">로그인</button>
+            </div>
+
+            <!-- 회원가입 버튼 -->
+            <div class="form-group">
+                <button type="button" class="action-button signup-button" onclick="location.href='register.html'">회원가입</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
