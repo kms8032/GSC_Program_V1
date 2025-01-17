@@ -22,12 +22,13 @@ body {
 
 /* 공지사항 스타일 */
 .notice {
-    background-color: #ffcdd2; /* 연한 분홍색 */
+    background-color: #ffcdd2;
     width: 100%;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .notice h2 {
@@ -52,7 +53,7 @@ body {
 }
 
 .schedule-header {
-    background-color: #e3f2fd; /* 연한 파란색 */
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
@@ -63,7 +64,7 @@ body {
 }
 
 .schedule-content {
-    background-color: #e1bee7; /* 연한 보라색 */
+    background-color: #e1bee7;
     padding: 20px;
     border-radius: 10px;
     text-align: center;

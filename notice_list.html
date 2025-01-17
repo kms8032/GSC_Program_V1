@@ -3,26 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학생 대시보드</title>
-    <link rel="stylesheet" href="./assets/styles/student_dashboard.css">
+    <title>공지사항 목록</title>
+    <link rel="stylesheet" href="./assets/styles/notice_list.css">
 </head>
 <body>
     <div class="container">
-        <!-- 공지사항 -->
-        <div class="notice" onclick="window.location.href='notice_list.html';">
+        <!-- 공지사항 제목 -->
+        <div class="notice-header">
             <h2>공지사항</h2>
-            <p>여기에 공지사항 내용이 표시됩니다.</p>
         </div>
 
-        <!-- 학년별 정규 시간표 -->
-        <div class="schedule">
-            <div class="schedule-header">
-                학년별 정규 시간표
-            </div>
-            <div class="schedule-content">
-                학년별로 맞춰진 시간표 불러오기
-            </div>
+        <!-- 학년 필터 -->
+        <div class="filter">
+            <label for="grade-filter">학년:</label>
+            <select id="grade-filter" onchange="filterNotices()">
+                <option value="all">전체</option>
+                <option value="1">1학년</option>
+                <option value="2">2학년</option>
+                <option value="3">3학년</option>
+            </select>
         </div>
+
+        <!-- 공지사항 테이블 -->
+        <table class="notice-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>학년</th>
+                    <th>제목</th>
+                    <th>날짜</th>
+                </tr>
+            </thead>
+            <tbody id="notice-list">
+                <!-- 공지사항 항목 -->
+                <tr>
+                    <td>1</td>
+                    <td>1학년</td>
+                    <td>학과 프로그램 사용법</td>
+                    <td>2024.01.11</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2학년</td>
+                    <td>졸업 프로젝트 공지</td>
+                    <td>2024.01.10</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>3학년</td>
+                    <td>취업 설명회 안내</td>
+                    <td>2024.01.09</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-button" onclick="window.history.back();">돌아가기</button>
     </div>
+
+    <script>
+        // 공지사항 필터 함수
+        function filterNotices() {
+            const filter = document.getElementById('grade-filter').value;
+            const rows = document.querySelectorAll('#notice-list tr');
+            rows.forEach(row => {
+                const grade = row.cells[1].textContent;
+                row.style.display = (filter === 'all' || grade === filter + "학년") ? '' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
