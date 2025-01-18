@@ -32,7 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user['role'] === '학생') {
                 header("Location: ../student_dashboard.html");
                 exit; // 리다이렉트 후 코드 실행 중단
-            } else {
+            } else if ($user['role'] === '관리자'){
+                header("Location: ../admin_dashboard.html");
+                exit; // 리다이렉트 후 코드 실행 중단
+            }else {
                 echo "권한이 없습니다.";
             }
         } else {

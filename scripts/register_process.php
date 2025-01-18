@@ -1,40 +1,41 @@
 <?php
+// 오류 표시 설정 (디버깅용)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include 'db_connect.php';
 
-// 폼에서 전달된 데이터 처리
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // 사용자 입력값 가져오기
-    $name = $_POST['name'];
-    $student_id = $_POST['student-id'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm-password'];
-    $role = $_POST['user-type']; // 선택된 사용자 유형
+// 사용자 입력값 받기
+$name = $_POST['name'] ?? null;
+$student_id = $_POST['student_id'] ?? null;
+$password = $_POST['password'] ?? null;
+$confirm_password = $_POST['confirm_password'] ?? null;
+$user_type = $_POST['user_type'] ?? null;
 
-    // 비밀번호 확인
-    if ($password !== $confirm_password) {
-        echo "비밀번호가 일치하지 않습니다.";
-        exit();
-    }
+// 모든 필드 확인
+if (empty($name) || empty($student_id) || empty($password) || empty($confirm_password) || empty($user_type)) {
+    die("모든 필드를 작성해야 합니다.");
+}
 
-    // SQL 쿼리: 사용자 정보 삽입
-    $sql = "INSERT INTO users (name, student_id, password, role) 
-            VALUES (?, ?, ?, ?)";
+// 비밀번호 확인
+if ($password !== $confirm_password) {
+    die("비밀번호가 일치하지 않습니다.");
+}
 
-    // 쿼리 준비 및 바인딩
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $name, $student_id, $password, $role);
+// 데이터베이스에 사용자 추가
+$sql = "INSERT INTO users (student_id, name, password, role) VALUES (?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
 
-    // 쿼리 실행
+if ($stmt) {
+    $stmt->bind_param("ssss", $student_id, $name, $password, $user_type);
     if ($stmt->execute()) {
-        echo "회원가입이 완료되었습니다.";
+        echo "회원가입 성공!";
+        header("Location: ../login.html");
+        exit;
     } else {
-        echo "회원가입 실패: " . $stmt->error;
+        die("회원가입 중 오류 발생: " . $stmt->error);
     }
-
-    // 연결 종료
-    $stmt->close();
-    $conn->close();
 } else {
-    echo "잘못된 요청입니다.";
+    die("쿼리 준비 중 오류 발생: " . $conn->error);
 }
 ?>

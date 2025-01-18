@@ -14,52 +14,52 @@
             <h1>영진전문대학교<br>글로벌시스템융합과</h1>
         </div>
 
-        <!-- 회원가입 폼 -->
         <form class="signup-form" action="./scripts/register_process.php" method="POST">
             <!-- 이름 입력 -->
             <div class="form-group">
                 <label for="name">이름 :</label>
                 <input type="text" id="name" name="name" placeholder="이름 입력" required>
             </div>
-
+        
             <!-- 학번 입력 -->
             <div class="form-group">
                 <label for="student-id">학번 :</label>
                 <input type="text" id="student-id" name="student_id" placeholder="학번 입력" required>
             </div>
-
+        
             <!-- 비밀번호 입력 -->
             <div class="form-group">
                 <label for="password">비밀번호 :</label>
                 <input type="password" id="password" name="password" placeholder="비밀번호 입력" required>
             </div>
-
+        
             <!-- 비밀번호 확인 -->
             <div class="form-group">
                 <label for="confirm-password">비밀번호 확인 :</label>
                 <input type="password" id="confirm-password" name="confirm_password" placeholder="비밀번호 확인" required>
             </div>
-
+        
             <!-- 사용자 유형 선택 -->
             <div class="form-group">
                 <label>사용자 유형 :</label>
                 <div class="user-type">
-                    <label><input type="radio" name="user_type" value="학생" checked> 학생</label>
+                    <label><input type="radio" name="user_type" value="학생" required> 학생</label>
                     <label><input type="radio" name="user_type" value="교수"> 교수</label>
                     <label><input type="radio" name="user_type" value="관리자"> 관리자</label>
                 </div>
             </div>
-
+        
             <!-- 회원가입 버튼 -->
             <div class="form-group">
                 <button type="submit" class="action-button signup-button">회원가입</button>
             </div>
-
+        
             <!-- 뒤로가기 버튼 -->
             <div class="form-group">
                 <button type="button" class="action-button back-button" onclick="window.history.back();">뒤로가기</button>
             </div>
         </form>
+        
     </div>
 </body>
 </html>

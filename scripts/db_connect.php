@@ -12,5 +12,5 @@ $conn = new mysqli($host, $username, $pw, $dbname, $port);
 if ($conn->connect_error) {
     die("MySQL 연결 실패: " . $conn->connect_error);
 }
-echo "MySQL 연결 성공!";
+
 ?>

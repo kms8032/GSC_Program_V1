@@ -2,18 +2,16 @@
 // 데이터베이스 연결
 include 'db_connect.php';
 
-// 학년 필터링 (전체 보기 또는 특정 학년)
+// 학년 필터링
 $grade_filter = $_GET['grade'] ?? 'all';
+
 if ($grade_filter === 'all') {
     $sql = "SELECT * FROM notices ORDER BY created_at DESC";
+    $stmt = $conn->prepare($sql);
 } else {
     $sql = "SELECT * FROM notices WHERE grade = ? ORDER BY created_at DESC";
-}
-
-$stmt = $conn->prepare($sql);
-
-if ($grade_filter !== 'all') {
-    $stmt->bind_param("s", $grade_filter); // 학년 필터 바인딩
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $grade_filter);
 }
 
 $stmt->execute();
@@ -27,6 +25,22 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 목록</title>
     <link rel="stylesheet" href="../assets/styles/notice_list.css">
+    <style>
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #ffaa00;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -37,13 +51,15 @@ $result = $stmt->get_result();
 
         <!-- 학년 필터 -->
         <div class="filter">
-            <label for="grade-filter">학년:</label>
-            <select id="grade-filter" onchange="filterNotices()">
-                <option value="all" <?= $grade_filter === 'all' ? 'selected' : '' ?>>전체</option>
-                <option value="1" <?= $grade_filter === '1' ? 'selected' : '' ?>>1학년</option>
-                <option value="2" <?= $grade_filter === '2' ? 'selected' : '' ?>>2학년</option>
-                <option value="3" <?= $grade_filter === '3' ? 'selected' : '' ?>>3학년</option>
-            </select>
+            <form method="GET" action="notice_list.php">
+                <label for="grade-filter">학년:</label>
+                <select id="grade-filter" name="grade" onchange="this.form.submit()">
+                    <option value="all" <?= $grade_filter === 'all' ? 'selected' : '' ?>>전체</option>
+                    <option value="1" <?= $grade_filter === '1' ? 'selected' : '' ?>>1학년</option>
+                    <option value="2" <?= $grade_filter === '2' ? 'selected' : '' ?>>2학년</option>
+                    <option value="3" <?= $grade_filter === '3' ? 'selected' : '' ?>>3학년</option>
+                </select>
+            </form>
         </div>
 
         <!-- 공지사항 테이블 -->
@@ -56,33 +72,31 @@ $result = $stmt->get_result();
                     <th>날짜</th>
                 </tr>
             </thead>
-            <tbody id="notice-list">
-                <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . ($row['grade'] ?? '전체') . "</td>";
-                        echo "<td><a href='notice_detail.php?id=" . $row['id'] . "'>" . htmlspecialchars($row['title']) . "</a></td>";
-                        echo "<td>" . $row['created_at'] . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='4'>공지사항이 없습니다.</td></tr>";
-                }
-                ?>
+            <tbody>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['id']) ?></td>
+                            <td><?= htmlspecialchars($row['grade']) ?>학년</td>
+                            <td><a href="notice_detail.php?id=<?= htmlspecialchars($row['id']) ?>"><?= htmlspecialchars($row['title']) ?></a></td>
+                            <td><?= htmlspecialchars($row['created_at']) ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="4">공지사항이 없습니다.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
 
         <!-- 뒤로가기 버튼 -->
-        <button class="back-button" onclick="window.history.back();">돌아가기</button>
+        <button class="back-button" onclick="goBack()">뒤로가기</button>
     </div>
 
     <script>
-        // 필터 변경 시 URL 변경
-        function filterNotices() {
-            const filter = document.getElementById('grade-filter').value;
-            window.location.href = `notice_list.php?grade=${filter}`;
+        function goBack() {
+            window.location.href = "../student_dashboard.html";
         }
     </script>
 </body>
