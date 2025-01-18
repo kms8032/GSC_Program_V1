@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 대시보드</title>
+    <link rel="stylesheet" href="./assets/styles/admin_dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 공지사항 관리 -->
+        <div class="notice" onclick="window.location.href='./scripts/manage_notices.php';">
+            <h2>공지사항</h2>
+        </div>
+        
+        <!-- 학년별 시간표 관리 -->
+        <div class="schedule" onclick="window.location.href='./scripts/admin_schedule.php';">
+            <h2>학년별 시간표</h2>
+        </div>
+
+        <!-- 회원가입 신청 관리 -->
+        <div class="signup-management">
+            <h2>회원가입 신청</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>학번</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2423000</td>
+                        <td>정민호</td>
+                        <td>01012345678</td>
+                        <td>
+                            <button class="approve-btn">승인</button>
+                            <button class="reject-btn">거부</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2423001</td>
+                        <td>김유정</td>
+                        <td>01023456789</td>
+                        <td class="approved">승인 완료</td>
+                    </tr>
+                    <tr>
+                        <td>2423002</td>
+                        <td>박지훈</td>
+                        <td>01034567890</td>
+                        <td class="rejected">거부 완료</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="./scripts/signup_requests.php" class="view-more">자세히 보기...</a>
+        </div>
+    </div>
+</body>
+</html>

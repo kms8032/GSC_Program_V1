@@ -1,0 +1,112 @@
+/* 기본 설정 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0099ff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 컨테이너 */
+.container {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 공지사항, 시간표 관리 */
+.notice, .schedule {
+    background-color: #ffcdd2;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.notice:hover, .schedule:hover {
+    transform: scale(1.02);
+}
+
+.notice h2, .schedule h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: black;
+}
+
+.notice p, .schedule p {
+    margin: 10px 0 0;
+    font-size: 1em;
+    color: black;
+}
+
+/* 회원가입 신청 관리 */
+.signup-management {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.signup-management h2 {
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.approve-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reject-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.approved {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.rejected {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.view-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0099ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-more:hover {
+    text-decoration: underline;
+}
